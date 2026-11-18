@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NutriPlate.Views.SignInPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:NutriPlate.ViewModels"
+    Title="SignInPage"
+    x:DataType="views:SignInViewModel"
+    FlowDirection="LeftToRight">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Offset="0.0" Color="Purple" />
+            <GradientStop Offset="0.5" Color="Orange" />
+            <GradientStop Offset="1.0" Color="LightGreen" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="25"
+        VerticalOptions="Center">
+
+        <!--  כותרת  -->
+        <Label
+            FontAttributes="Bold"
+            FontSize="25"
+            Text="כניסה"
+            TextColor="Snow"
+            VerticalOptions="Center" />
+
+        <Border
+            Padding="10"
+            Stroke="#ccc"
+            StrokeShape="RoundRectangle 8"
+            StrokeThickness="1">
+            <Entry
+                FontSize="18"
+                Keyboard="Email"
+                Placeholder="Email"
+                ReturnType="Go"
+                Text="{Binding UserName}"
+                TextColor="Wheat" />
+        </Border>
+
+        <Border
+            Stroke="#ccc"
+            StrokeShape="RoundRectangle 8"
+            StrokeThickness="1">
+
+            <Grid
+                Padding="10"
+                ColumnDefinitions="*,Auto"
+                VerticalOptions="Center">
+
+                <Entry
+                    BackgroundColor="Transparent"
+                    FontSize="18"
+                    IsPassword="{Binding IsPassword}"
+                    Placeholder="Password"
+                    Text="{Binding UserPassword}"
+                    TextColor="Wheat"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Margin="5,0,0,0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    Command="{Binding ShowPasswordCommand}"
+                    FontFamily="MyMaterialSymbols"
+                    FontSize="24"
+                    HorizontalOptions="End"
+                    Text="{Binding EyeIcon}"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <!--  כפתור כניסה  -->
+        <Button
+            Command="{Binding SignInCommand}"
+            CornerRadius="8"
+            FontSize="18"
+            HeightRequest="50"
+            Text="חיבור"
+            TextColor="White" />
+
+        <!--  שגיאה  -->
+        <Label
+            FontSize="45"
+            HorizontalTextAlignment="Center"
+            IsVisible="{Binding SignInMessageVisible}"
+            Text="{Binding LoginMessage}"
+            TextColor="{Binding SignInMessageColor}" />
+
+        <!--  Don't have an account?  -->
+        <HorizontalStackLayout
+            FlowDirection="LeftToRight"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Label
+                Margin="14,0,0,0"
+                FontSize="16"
+                Text="Don't have an account?"
+                TextColor="White"
+                VerticalTextAlignment="Center" />
+            <Button
+                BackgroundColor="Transparent"
+                Command="{Binding NavigateToSignUpCommand}"
+                FontSize="16"
+                Text="SignUp"
+                TextColor="Blue" />
+
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
