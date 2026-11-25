@@ -86,10 +86,10 @@
                     FontSize="18"
                     Keyboard="Email"
                     Placeholder="Email"
+                    Style="{StaticResource FormEntry}"
                     Text="{Binding Email}"
-                    TextColor="Wheat"
-                    Style="{StaticResource FormEntry}">
-                    
+                    TextColor="Wheat">
+
                     <Entry.Behaviors>
                         <toolkit:EmailValidationBehavior
                             Flags="ValidateOnValueChanged"
@@ -111,10 +111,9 @@
                     ColumnDefinitions="*,Auto"
                     VerticalOptions="Center">
                     <Entry
-                        x:Name="PasswordEntry"
                         BackgroundColor="Transparent"
                         FontSize="18"
-                        IsPassword="True"
+                        IsPassword="{Binding IsPassword}"
                         Placeholder="Password"
                         Text="{Binding UserPassword}"
                         TextColor="Wheat"
@@ -123,11 +122,11 @@
                         Margin="5,0,0,0"
                         Padding="0"
                         BackgroundColor="Transparent"
-                        Command="{Binding TogglePassordButton}"
-                        FontFamily="MaterialSymbolsFont"
+                        Command="{Binding ShowPasswordCommand}"
+                        FontFamily="MyMaterialSymbols"
                         FontSize="24"
                         HorizontalOptions="End"
-                        Text="&#xe8f5;"
+                        Text="{Binding EyeIcon}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -150,6 +149,7 @@
 
             <!--  כפתור כניסה  -->
             <Button
+                Command="{Binding SignUpCommand}"
                 CornerRadius="8"
                 FontSize="20"
                 HeightRequest="70"
@@ -166,9 +166,10 @@
                     VerticalTextAlignment="Center" />
                 <Button
                     BackgroundColor="Transparent"
+                    Command="{Binding NavigateToSignInCommand}"
                     FontSize="16"
                     Text="SignIn"
-                    TextColor="BlueViolet" />
+                    TextColor="Blue" />
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
